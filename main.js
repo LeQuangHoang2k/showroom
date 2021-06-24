@@ -1,25 +1,24 @@
-var express = require('express')
-var app = express()
+var express = require("express");
+var app = express();
 
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 
-var router = express.Router()
+var router = express.Router();
 
-router.use(express.static('public'))
+router.use(express.static("public"));
 
-var webconfig = require('./webconfig')
+var webconfig = require("./webconfig");
 
 function controller(name) {
-    return require('./controllers/' + name + '-controller')
+  return require("./controllers/" + name + "-controller");
 }
 
-router.get('/', function (request, response) {
-    controller('home').get(request, response)
-}
-)
+router.get("/", function (request, response) {
+  controller("home").get(request, response);
+});
 
-app.use(webconfig.root, router)
+app.use(webconfig.root, router);
 
-app.listen(8080, function(){
-    console.log('Server stared OK!')
-})
+app.listen(8080, function () {
+  console.log("http://localhost:8080/showroom");
+});
